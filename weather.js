@@ -47,7 +47,7 @@ function getWeather(location) {
     var city = response.name;
     var date = new Date(response.dt * 1000)
     var icon = response.weather[0].icon;
-    var iconURL = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    var iconURL = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     var temp = response.main.temp;
     var humidity = response.main.humidity;
     var wind = response.wind.speed;
@@ -72,7 +72,7 @@ function getWeather(location) {
     windEl.text(`Wind Speed: ${wind} MPH`);
     console.log(lat);
     console.log(lon);
-    var uvQueryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
+    var uvQueryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + lat + "&lon=" + lon;
 
     $.ajax({
       url: uvQueryURL,
@@ -86,7 +86,7 @@ function getWeather(location) {
 }
 
 function forecast5Day(location) {
-  var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIKey;
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + location + "&units=imperial&appid=" + APIKey;
 
   $.ajax({
     url: queryURL,
@@ -107,7 +107,7 @@ function forecast5Day(location) {
       var forecastDate = $("<h5>").addClass("card-title").text(dateStr);
       var icon = list[i].weather[0].icon
       var forecastIcon = $("<div>").append($("<img>").attr({
-        "src": `http://openweathermap.org/img/wn/${icon}@2x.png`,
+        "src": `https://openweathermap.org/img/wn/${icon}@2x.png`,
         "alt": "Weather Icon"
       }));
       var forecastTemp = $("<p>").addClass("card-text").html(`Temp: ${list[i].main.temp} &#8457;`);
